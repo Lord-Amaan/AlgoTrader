@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: algo-python-engine
+    env: docker
+    branch: master
+    path: server/python-engine
+    plan: starter
+    autoDeploy: true
+    healthCheckPath: /health
