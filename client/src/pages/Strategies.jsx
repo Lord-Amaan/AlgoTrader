@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '@clerk/clerk-react';
 import { strategyService } from '../services/strategyService';
 import StrategyModal from '../components/StrategyModal';
@@ -7,6 +7,7 @@ import { SkeletonStrategyList } from '../components/Skeleton';
 
 export default function Strategies() {
   const navigate = useNavigate();
+  const location = useLocation();
   const { userId } = useAuth();
   const [listLoading, setListLoading] = useState(false);
   const [templatesLoading, setTemplatesLoading] = useState(false);
@@ -18,6 +19,7 @@ export default function Strategies() {
   const [templates, setTemplates] = useState([]);
   const [selectedStrategy, setSelectedStrategy] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [strategyToOpen, setStrategyToOpen] = useState(null);
 
   const loadUserStrategies = async () => {
     const response = await strategyService.getAll();
@@ -45,6 +47,10 @@ export default function Strategies() {
 
   useEffect(() => {
     loadAllStrategies();
+    // Check if we came from dashboard with a strategy to open
+    if (location.state?.strategyId) {
+      setStrategyToOpen(location.state.strategyId);
+    }
   }, []);
 
   useEffect(() => {
@@ -64,6 +70,18 @@ export default function Strategies() {
   useEffect(() => {
     localStorage.setItem('algoroom_strategy_notes', JSON.stringify(strategyNotes));
   }, [strategyNotes]);
+
+  // Auto-open modal if we have a strategy to open and strategies are loaded
+  useEffect(() => {
+    if (strategyToOpen && strategies.length > 0) {
+      const strategy = strategies.find((s) => s._id === strategyToOpen);
+      if (strategy) {
+        setSelectedStrategy(strategy);
+        setIsModalOpen(true);
+        setStrategyToOpen(null); // Clear it so it doesn't open again
+      }
+    }
+  }, [strategyToOpen, strategies]);
 
   const handleCardClick = (strategy) => {
     setSelectedStrategy(strategy);
