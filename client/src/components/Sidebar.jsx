@@ -47,7 +47,7 @@ export default function Sidebar() {
   return (
     <aside className="w-full border-b border-[#dfe6f2] bg-[#f6f9ff] md:w-72 md:border-b-0 md:border-r flex flex-col">
       <div className="px-4 py-4 md:p-6">
-        <h1 className="text-xl font-bold tracking-tight text-[#255a98]">Algoroom</h1>
+        <h1 className="text-xl font-bold tracking-tight text-[#255a98]">JavaAlgo</h1>
         <p className="mt-1 text-xs text-[#8190a5]">Algo Trading Platform</p>
       </div>
 

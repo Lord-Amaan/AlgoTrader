@@ -55,7 +55,7 @@ export default function Strategies() {
 
   useEffect(() => {
     try {
-      const saved = localStorage.getItem('algoroom_strategy_notes');
+      const saved = localStorage.getItem('javaalgo_strategy_notes');
       if (saved) {
         const parsed = JSON.parse(saved);
         if (parsed && typeof parsed === 'object') {
@@ -68,7 +68,7 @@ export default function Strategies() {
   }, []);
 
   useEffect(() => {
-    localStorage.setItem('algoroom_strategy_notes', JSON.stringify(strategyNotes));
+    localStorage.setItem('javaalgo_strategy_notes', JSON.stringify(strategyNotes));
   }, [strategyNotes]);
 
   // Auto-open modal if we have a strategy to open and strategies are loaded
