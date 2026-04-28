@@ -3,14 +3,19 @@ import axios from 'axios';
 const getBaseURL = () => {
   // Use environment variable if set (production)
   if (import.meta.env.VITE_API_URL) {
+    console.log('Using VITE_API_URL:', import.meta.env.VITE_API_URL);
     return import.meta.env.VITE_API_URL;
   }
   // Default to relative path (development)
+  console.log('Using relative path: /api');
   return '/api';
 };
 
+const baseURL = getBaseURL();
+console.log('API baseURL:', baseURL);
+
 const api = axios.create({
-  baseURL: getBaseURL(),
+  baseURL,
   headers: {
     'Content-Type': 'application/json',
   },
