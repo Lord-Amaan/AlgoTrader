@@ -4,6 +4,7 @@ import { SignedIn, SignedOut, RedirectToSignIn } from '@clerk/clerk-react';
 import { useAuth } from '@clerk/clerk-react';
 import Dashboard from './pages/Dashboard';
 import StrategyBuilder from './pages/StrategyBuilder';
+import StrategyDetail from './pages/StrategyDetail';
 import Strategies from './pages/Strategies';
 import Backtesting from './pages/Backtesting';
 import LiveTrading from './pages/LiveTrading';
@@ -86,6 +87,14 @@ export default function App() {
         element={
           <ProtectedRoute>
             <Strategies />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/strategies/:id"
+        element={
+          <ProtectedRoute>
+            <StrategyDetail />
           </ProtectedRoute>
         }
       />

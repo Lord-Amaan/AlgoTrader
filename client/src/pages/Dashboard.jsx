@@ -116,7 +116,7 @@ export default function Dashboard() {
               <div
                 key={strategy._id}
                 className="bg-white border rounded-xl p-4 shadow-sm hover:shadow-md transition cursor-pointer"
-                onClick={() => window.location.href = `/strategies/${strategy._id}`}
+                onClick={() => navigate(`/strategies/${strategy._id}`)}
               >
                 <div className="flex justify-between items-center">
                   <div>
