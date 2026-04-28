@@ -217,7 +217,7 @@ exports.runBacktest = async (req, res) => {
       });
     }
 
-    const pythonEngineUrl = process.env.PYTHON_ENGINE_URL || 'http://localhost:8001';
+    const pythonEngineUrl = process.env.PYTHON_ENGINE_URL || 'https://algotrader-python.onrender.com';
     const backTestRequest = {
       candles,
       strategy: {
