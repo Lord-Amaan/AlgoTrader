@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { marketService } from '../services/strategyService';
+import TradingViewChart from '../components/TradingViewChart';
 
 const RANGES = ['1D', '1W', '1M', '3M', '1Y'];
 
@@ -210,23 +211,7 @@ export default function LiveCharts() {
               </div>
 
               <div className="mt-4 rounded-2xl border border-[#d7e5f5] bg-[#f9fcff] p-3">
-                <svg viewBox="0 0 100 42" className="h-64 w-full">
-                  <defs>
-                    <linearGradient id="chartFade" x1="0" x2="0" y1="0" y2="1">
-                      <stop offset="0%" stopColor={selectedDetail.changePct >= 0 ? '#6ad68f' : '#f89aa0'} stopOpacity="0.45" />
-                      <stop offset="100%" stopColor={selectedDetail.changePct >= 0 ? '#6ad68f' : '#f89aa0'} stopOpacity="0.02" />
-                    </linearGradient>
-                  </defs>
-                  <path d={chartArea} fill="url(#chartFade)" />
-                  <path
-                    d={chartPath}
-                    fill="none"
-                    stroke={selectedDetail.changePct >= 0 ? '#1f7a3f' : '#a73636'}
-                    strokeWidth="1.05"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
+                <TradingViewChart symbol={selectedDetail.symbol} interval="60" height={320} />
               </div>
 
               <div className="mt-3 flex flex-wrap gap-2">
