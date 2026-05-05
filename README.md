@@ -245,7 +245,7 @@ Browser (React)
 ## Python Engine
 
 The Python engine is built with [FastAPI](https://fastapi.tiangolo.com/) and handles all heavy backtesting computation.
-
+Run using this locally : py -V:Astral\CPython3.12.13 main.py
 **Currently supported:**
 
 - RSI indicator calculation
