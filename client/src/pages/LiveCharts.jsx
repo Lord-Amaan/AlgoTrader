@@ -211,7 +211,7 @@ export default function LiveCharts() {
               </div>
 
               <div className="mt-4 rounded-2xl border border-[#d7e5f5] bg-[#f9fcff] p-3">
-                <TradingViewChart symbol={selectedDetail.symbol} interval="60" height={320} />
+                <TradingViewChart symbol={selectedDetail.symbol} interval="1D" height={320} />
               </div>
 
               <div className="mt-3 flex flex-wrap gap-2">

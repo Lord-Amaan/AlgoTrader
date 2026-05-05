@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-export default function TradingViewChart({ symbol = 'AAPL', interval = '60', height = 320 }) {
+export default function TradingViewChart({ symbol = 'AAPL', interval = '1D', height = 320 }) {
   const containerRef = useRef(null);
   const uidRef = useRef(`tv_chart_${Math.random().toString(36).slice(2,9)}`);
   const [initError, setInitError] = useState(false);
